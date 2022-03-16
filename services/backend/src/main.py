@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 from src.database.register import register_tortoise
 from src.database.config import TORTOISE_ORM
+from src.routes import users, notes
 
 Tortoise.init_models(["src.database.models"], "models")
 
@@ -15,6 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(users.router)
+app.include_router(notes.router)
 
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
 
