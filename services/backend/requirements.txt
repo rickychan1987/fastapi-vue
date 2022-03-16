@@ -1,2 +1,8 @@
 fastapi
 uvicorn
+aerich
+asyncpg
+tortoise-orm
+passlib
+bcrypt
+python-jose
